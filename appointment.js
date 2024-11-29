@@ -7,8 +7,18 @@ router.get('/', (req, res) => {
     res.send('Welcome to the appointment route');
 });
 
+const checkAuth = (req, res, next) => {
+    // Example: Check if the user has admin privileges
+    if (req.user && req.user.isAdmin) { // Modify as needed
+        next();
+    } else {
+        res.status(403).json({ message: 'Forbidden: Admins only' });
+    }
+};
+
+
 // Book an appointment
-router.post('/book', checkAuth, async (req, res) => {
+router.post('/appointment', checkAuth, async (req, res) => {
     const { doctor_id, appointment_date, appointment_time } = req.body;
     const patient_id = req.session.patientId; // Get patient ID from session
 

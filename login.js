@@ -5,7 +5,7 @@ const db = require('./db');  // Database connection
 const router = express.Router();
 
 router.get('/', (req, res) => {
-    res.send('Welcome to the patient route');
+    res.send('Welcome to the login route');
 });
 
 // Patient Registration
@@ -55,14 +55,12 @@ router.post('/login', async (req, res) => {
 });
 
 const checkAuth = (req, res, next) => {
-    // Example logic: Check if user is authenticated
-    if (req.isAuthenticated()) {
-        return next();
+    if (req.user && req.user.isAdmin) { 
+        next();
     } else {
-        return res.status(401).json({ message: 'Unauthorized' });
+        res.status(403).json({ message: 'Forbidden: Admins only' });
     }
 };
-
 
 // Update patient profile
 router.put('/update', checkAuth, async (req, res) => {

@@ -4,11 +4,11 @@ const session = require('express-session');
 const MySQLStore = require('express-mysql-session')(session);
 const bodyParser = require('body-parser');
 const db = require('./db');  // Database connection
-const myRouter = require('./patient.js');
+const myRouter = require('./login.js','/doctor.js', '/appointment.js');
 
 // Importing patient routes from patient
-const patientRoutes = require('./patient');
-const doctorRoutes = require('/doctor')
+const loginRoutes = require('./login');
+const doctorRoutes = require('./doctor')
 const appointmentRoutes = require('./appointment');
 
 //initializing the express
@@ -28,16 +28,16 @@ app.use(session({
 }));
 
 // Define routes
-app.use('/patients', patientRoutes);
+app.use('/login', loginRoutes);
 app.use('/doctor', doctorRoutes);
-app.use('/doctor', appointmentRoutes);
+app.use('/appointment', appointmentRoutes);
 
 
 // Creating port
-const port = 5500;
+const port = 4500;
 
 // Start the server
-const PORT = process.env.PORT || 5500;
+const PORT = process.env.PORT || 4500;
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
 });
