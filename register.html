@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign up- Telemed</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="form-container">
+            <p class="title">Registration Form</p>
+            <form action="" class="form">
+                <input type="Name" class="form" placeholder="Enter First name" required>
+                <input type="Name" class="form" placeholder="Enter Last name" required>
+                <input type="email" class="input" placeholder="Email" required>
+                <input type="password" class="input" placeholder="Password" required>
+                <input type="confirmPassword" class="input" placeholder="Confirm Password" required>
+                <label for="dropdown">Gender</label>
+                <select id="dropdown" name="gender">
+                    <option value="gender">Gender</option>
+                    <option value="gender">Male</option>
+                    <option value="gender">Female</option>
+                    <option value="gender">Prefer not to say</option>
+                </select>
+                <br>
+                <br>
+                <label >
+                    <input type="checkbox" name="terms" id="terms" required>
+                    I agree to the <a href="#" target="_blank">Terms and Conditions</a>
+                </label>
+                <br>
+                <br>
+                <button class="form-btn">Register</button>
+            </form>
+        </div>
+    </div>
+    <script src="login.js"></script>
+</body>
+</html>
